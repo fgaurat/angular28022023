@@ -1,0 +1,44 @@
+<form (ngSubmit)="submitTodo()" #todoForm="ngForm">
+  Form
+  <pre>
+    {{ todoForm.valid }}
+  </pre>
+  <mat-form-field appearance="fill">
+    <mat-label>Todo Title</mat-label>
+    <input
+      matInput
+      [(ngModel)]="todoFormModel.todoTitle"
+      name="todoTitleForm"
+      required
+      #todoTitleForm="ngModel"
+    />
+  </mat-form-field>
+
+  <mat-checkbox
+    [(ngModel)]="todoFormModel.todoCompleted"
+    name="todoCompletedForm"
+  ></mat-checkbox>
+  Done ?
+
+  <div *ngIf="todoTitleForm.valid">ok</div>
+
+  <pre>
+  {{ todoTitleForm }}
+  {{ todoFormModel | json }}
+  valid : {{ todoTitleForm.valid }} - invalid : {{ todoTitleForm.invalid }}
+  dirty : {{ todoTitleForm.dirty }} - pristine : {{ todoTitleForm.pristine }}
+
+  touched : {{ todoTitleForm.touched }} - untouched : {{ todoTitleForm.untouched }}
+
+</pre
+  >
+  <br />
+  <button
+    mat-flat-button
+    color="primary"
+    type="submit"
+    [disabled]="todoForm.invalid"
+  >
+    Ok
+  </button>
+</form>
